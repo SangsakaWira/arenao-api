@@ -1,0 +1,13 @@
+const mongoose = require("mongoose")
+
+mongoose.connect("mongodb://localhost/field",{useNewUrlParser:true})
+
+const fieldSchema = mongoose.Schema({
+    fullname:String,
+    email:String,
+    password:String
+})
+
+let user = mongoose.model("user",fieldSchema)
+
+module.exports = user
