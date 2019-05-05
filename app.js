@@ -7,18 +7,7 @@ let urlencodedParser = bodyParser.urlencoded({ extended: false })
 const app = express()
 let field = require("./model/field")
 let user = require("./model/user")
-let server = http.createServer(app)
-let io = socketIO(server)
-
-io.on("connection",function(socket){
-    field.find(function(err,data){
-        if(err){
-            console.log("Something is wrong!")
-        }else{
-            socket.emit("semua",data)
-        }
-    })
-})
+app.use(express.static(__dirname+"/img"))
 
 app.listen(3000,function(){
     console.log("Server is running")
@@ -81,4 +70,8 @@ app.get("/:id",function(req,res){
             res.send(data)
         }
     })
+})
+
+app.get("/img/:gambar",function(req,res){
+    res.sendFile(__dirname+"/img/"+req.params.gambar)
 })
