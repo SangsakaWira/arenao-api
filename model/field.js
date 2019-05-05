@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-mongoose.connect("mongodb://localhost/field",{useNewUrlParser:true})
+mongoose.connect("mongodb://localhost/arenao",{useNewUrlParser:true})
 
 const fieldSchema = mongoose.Schema({
     nama:String,
