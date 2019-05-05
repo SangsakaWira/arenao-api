@@ -9,7 +9,7 @@ let field = require("./model/field")
 let user = require("./model/user")
 app.use(express.static(__dirname+"/img"))
 
-app.listen(3000,function(){
+app.listen(5000,function(){
     console.log("Server is running")
 })
 
