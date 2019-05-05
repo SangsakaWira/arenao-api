@@ -75,3 +75,7 @@ app.get("/:id",function(req,res){
 app.get("/img/:gambar",function(req,res){
     res.sendFile(__dirname+"/img/"+req.params.gambar)
 })
+
+app.get("/transaction/:gambar",function(req,res){
+    console.log("Transactions is opened")
+})
