@@ -7,6 +7,7 @@ let urlencodedParser = bodyParser.urlencoded({ extended: false })
 const app = express()
 let field = require("./model/field")
 let user = require("./model/user")
+let transaksi = require("./model/transaksi")
 app.use(express.static(__dirname+"/img"))
 
 app.listen(5000,function(){
@@ -62,7 +63,27 @@ app.post("/login",urlencodedParser,function(req,res){
     })
 })
 
-app.get("/:id",function(req,res){
+app.get("/user/:id",function(req,res){
+    user.findById(req.params.id,function(err,data){
+        if(err){
+            console.log("Something went wrong")
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+app.get("/user/:id/:transaksi",function(req,res){
+    user.findById(req.params.id,function(err,data){
+        if(err){
+            console.log("Something went wrong")
+        }else{
+            res.send(data)
+        }
+    })
+})
+
+app.post("/user/:id/update",function(req,res){
     user.findById(req.params.id,function(err,data){
         if(err){
             console.log("Something went wrong")
@@ -76,6 +97,41 @@ app.get("/img/:gambar",function(req,res){
     res.sendFile(__dirname+"/img/"+req.params.gambar)
 })
 
-app.get("/transaction/:gambar",function(req,res){
-    console.log("Transactions is opened")
+app.get("/transaksi/:id",function(req,res){
+    transaksi.findById(req.params.id,function(err,data){
+        if(err){
+            console.log("Something went wrong")
+        }else{
+            res.send(data)
+        }
+    })
 })
+
+app.get("/transaksi/:id/:status",function(req,res){
+    transaksi.findByIdAndUpdate(req.params.id,{
+        $set:{
+            status:req.params.status
+        }},
+        {new: true},function(err,doc){
+            if (err) {
+                console.log("Something wrong when updating data!")
+            }
+            else{
+                console.log(doc)
+            }
+        }
+    )
+    res.redirect("/transaksi/"+req.params.id)
+})
+
+app.get("/gettransaksi/all",function(req,res){
+    transaksi.find(function(err,data){
+        if(err){
+            console.log("Something is wrong!")
+        }else{
+            res.send(data)
+        }
+    })
+    }
+)
+

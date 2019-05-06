@@ -9,6 +9,6 @@ const fieldSchema = mongoose.Schema({
     transaksi:[String]
 })
 
-let user = mongoose.model("user",fieldSchema)
+let field_user = mongoose.model("field_user",fieldSchema)
 
-module.exports = user
+module.exports = field_user

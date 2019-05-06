@@ -9,15 +9,9 @@ const fieldSchema = mongoose.Schema({
     gambar:String,
     harga:String,
     rating:String,
-    fasilitas:[{
-        wifi:String
-    },{
-        kamar_mandi:String
-    },{
-        kafe:String
-    }]
+    fasilitas:String
 })
 
-let data_lapangan = mongoose.model("field",fieldSchema)
+let field = mongoose.model("field",fieldSchema)
 
-module.exports = data_lapangan
+module.exports = field
