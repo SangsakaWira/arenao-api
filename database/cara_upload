@@ -1,0 +1,3 @@
+mongoimport -d arenao -c fields --type CSV --file data_field,csv --headerline
+mongoimport -d arenao -c users --type CSV --file data_user,csv --headerline
+mongoimport -d arenao -c transaksis --type CSV --file data_transaksi,csv --headerline
