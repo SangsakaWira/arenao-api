@@ -5,8 +5,7 @@ mongoose.connect("mongodb://localhost/arenao",{useNewUrlParser:true})
 const fieldSchema = mongoose.Schema({
     fullname:String,
     email:String,
-    password:String,
-    transaksi:[String]
+    password:String
 })
 
 let user = mongoose.model("user",fieldSchema)
