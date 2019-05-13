@@ -1,10 +1,10 @@
 nama,tipe,lokasi,gambar,harga,rating,fasilitas
-Champion Futsal,Futsal,Sukolilo,http://trafficnet,id:5000/img/1,jpg,50000,4,3
-Winning Eleven,Futsal,Dukuh Kupang,http://trafficnet,id:5000/img/2,jpg,45000,5,4
-Goal,Futsal,Keputih,http://trafficnet,id:5000/img/3,jpg,75000,5,2
-VolleyShip,Volley,Klampis,http://trafficnet,id:5000/img/4,jpg,40000,5,4
-Badminton 2,0,Badminton,Semampir,http://trafficnet,id:5000/img/5,jpg,30000,4,5
-Kick Off,Futsal,Ampel,http://trafficnet,id:5000/img/6,jpg,60000,3,1
-Basket Jump,Basketball,Mulyosari,http://trafficnet,id:5000/img/7,jpg,80000,3,2
-Rebound,Basketball,Mulyosari,http://trafficnet,id:5000/img/8,jpg,40000,4,3
-ShutterZ,Badminton,Bungkul,http://trafficnet,id:5000/img/9,jpg,40000,5,4
+Champion Futsal,Futsal,Sukolilo,http://trafficnet.id:5000/img/1.jpg,50000,4,3
+Winning Eleven,Futsal,Dukuh Kupang,http://trafficnet.id:5000/img/2,jpg,45000,5,4
+Goal,Futsal,Keputih,http://trafficnet,id:5000/img/3.jpg,75000,5,2
+VolleyShip,Volley,Klampis,http://trafficnet,id:5000/img/4.jpg,40000,5,4
+Badminton 2,0,Badminton,Semampir,http://trafficnet,id:5000/img/5.jpg,30000,4,5
+Kick Off,Futsal,Ampel,http://trafficnet,id:5000/img/6.jpg,60000,3,1
+Basket Jump,Basketball,Mulyosari,http://trafficnet,id:5000/img/7.jpg,80000,3,2
+Rebound,Basketball,Mulyosari,http://trafficnet,id:5000/img/8.jpg,40000,4,3
+ShutterZ,Badminton,Bungkul,http://trafficnet,id:5000/img/9.jpg,40000,5,4
