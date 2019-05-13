@@ -14,6 +14,7 @@ app.listen(5000, function () {
     console.log("Server is running")
 })
 
+// REGISTER
 app.post("/register", urlencodedParser, function (req, res) {
     let data_user = req.body
     console.log(data_user.email)
@@ -45,6 +46,8 @@ app.post("/register", urlencodedParser, function (req, res) {
     })
 })
 
+
+// LOGIN
 app.post("/login", urlencodedParser, function (req, res) {
     user.findOne({
         email: req.body.email,
@@ -58,6 +61,7 @@ app.post("/login", urlencodedParser, function (req, res) {
     })
 })
 
+// GET ALL USER DEMO NTAR PASS TAK HILANGIN
 app.get("/user", function (req, res) {
     user.find(function (err, data) {
         if (err) {
@@ -68,6 +72,7 @@ app.get("/user", function (req, res) {
     })
 })
 
+// GET ALL USER BY ID
 app.get("/user/:id", function (req, res) {
     user.findById(req.params.id, function (err, data) {
         if (err) {
@@ -78,6 +83,7 @@ app.get("/user/:id", function (req, res) {
     })
 })
 
+// EDIT USER PROFILE
 app.patch("/user/:id", urlencodedParser,function (req, res) {
     user.findByIdAndUpdate(req.params.id,req.body
     ,{new: true, runValidators:true}, function (err, doc) {
@@ -90,10 +96,12 @@ app.patch("/user/:id", urlencodedParser,function (req, res) {
     })
 })
 
+// GET GAMBAR LAPANGAN
 app.get("/img/:gambar", function (req, res) {
     res.sendFile(__dirname + "/img/" + req.params.gambar)
 })
 
+// GET ALL TRANSAKSI & POST NEW TRANSAKSI
 app.route('/transaksi')
     .get(function (req, res) {
         transaksi.find(function (err, data) {
@@ -115,6 +123,7 @@ app.route('/transaksi')
         })
     })
 
+// GET TRANSAKSI BY ID
 app.get("/transaksi/:id", function (req, res) {
     transaksi.findById(req.params.id, function (err, data) {
         if (err) {
@@ -125,6 +134,7 @@ app.get("/transaksi/:id", function (req, res) {
     })
 })
 
+// MENGUBAH TRANSAKSI SDH LUNAS ATO BELUM
 app.get("/transaksi/:id/:status", function (req, res) {
     transaksi.findByIdAndUpdate(req.params.id, {
         $set: {
@@ -142,7 +152,7 @@ app.get("/transaksi/:id/:status", function (req, res) {
     res.redirect("/transaksi/" + req.params.id)
 })
 
-
+// GET ALL TRANSACTION BY USERNAME
 app.get("/alltransaksi/:username", function (req, res) {
     transaksi.find({
         user:req.params.username
@@ -158,6 +168,7 @@ app.get("/alltransaksi/:username", function (req, res) {
        
 })
 
+// GET ALL FIELD INFO & MAKE NEW FIELD
 app.route("/field").get(function (req, res) {
     field.find(function (err, data) {
         if (err) {
