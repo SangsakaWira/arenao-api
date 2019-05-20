@@ -186,3 +186,16 @@ app.route("/field").get(function (req, res) {
         }
     })
 })
+
+app.get("/email/:email",function(req,res){
+    user.findOne({
+	email:req.params.email
+    },function(err,data){
+	if(err){
+	  console.log("Error")
+	}else{
+	  res.send(data)
+	}
+    })
+
+})
