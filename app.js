@@ -8,6 +8,8 @@ const app = express()
 let field = require("./model/field")
 let user = require("./model/user")
 let transaksi = require("./model/transaksi")
+let bankacc = require("./model/bank")
+
 app.use(express.static(__dirname + "/img"))
 
 app.listen(5000, function () {
@@ -197,5 +199,4 @@ app.get("/email/:email",function(req,res){
 	  res.send(data)
 	}
     })
-
 })

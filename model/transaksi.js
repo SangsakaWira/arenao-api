@@ -10,7 +10,10 @@ const fieldSchema = mongoose.Schema({
     lapangan:String,
     user:String,
     field_user:String,
-    status:String
+    status:String,
+    nama_bank:String,
+    rekening:String,
+    an_bank:String
 })
 
 let transaksi = mongoose.model("transaksi",fieldSchema)
