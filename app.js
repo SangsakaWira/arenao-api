@@ -1,5 +1,10 @@
 const express = require("express")
 const bodyParser = require("body-parser")
+const multer = require('multer')
+
+const upload = multer({
+    dest:__dirname+"/uploads/bukti_transfer"
+})
 
 let urlencodedParser = bodyParser.urlencoded({
     extended: false
@@ -199,4 +204,11 @@ app.get("/email/:email",function(req,res){
 	  res.send(data)
 	}
     })
+})
+
+app.post("/upload", upload.single("photo"),(req,res)=>{
+    if(req.file){
+        res.json(req.file);
+    }
+    else throw "error"
 })
