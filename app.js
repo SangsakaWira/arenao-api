@@ -215,6 +215,6 @@ app.post("/upload", upload.single("photo"),(req,res)=>{
 
 // GET GAMBAR LAPANGAN
 app.get("/bukti/:gambar", function (req, res) {
-    res.sendFile(__dirname + "/bukti_transfer/" + req.params.gambar)
+    res.sendFile(__dirname + "/uploads/bukti_transfer/" + req.params.gambar)
 })
 
