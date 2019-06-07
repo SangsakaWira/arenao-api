@@ -213,8 +213,12 @@ app.post("/upload", upload.single("photo"),(req,res)=>{
     else throw "error"
 })
 
-// GET GAMBAR LAPANGAN
+// GET GAMBAR bukti
 app.get("/bukti/:gambar", function (req, res) {
     res.sendFile(__dirname + "/uploads/bukti_transfer/" + req.params.gambar)
+})
+
+app.get("/home", function (req, res) {
+    res.sendFile(__dirname + "/index.html")
 })
 
