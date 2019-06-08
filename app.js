@@ -224,15 +224,21 @@ app.get("/upload", function (req, res) {
 
 app.get("/getbank",function(req,res){
     res.send({
-        bank1:{
-            nama_bank:"Mandiri",
-            no_rek:9000005352555,
-            an_rek:"Muhammad Nuraga"
-        },
-        bank2:{
-            nama_bank:"BCA",
-            no_rek:6720331274,
-            an_rek:"Muhammad Nuraga"
-        }
+        bank_account:[{
+                nama_bank:"Mandiri",
+                no_rek:"9000005352555",
+                an_rek:"Muhammad Nuraga",
+                icon:"trafficnet.id:5000/icon/logomandiri.png"
+            },{
+                nama_bank:"BCA",
+                no_rek:"9000005352555",
+                an_rek:"Muhammad Nuraga",
+                icon:"trafficnet.id:5000/icon/logobca.png"
+            }
+        ]
     })
+})
+
+app.get("/icon/:id",function(req,res){
+    res.sendFile(__dirname + "/"+req.params.id)
 })
