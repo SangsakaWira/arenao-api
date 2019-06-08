@@ -223,8 +223,7 @@ app.get("/upload", function (req, res) {
 })
 
 app.get("/getbank",function(req,res){
-    res.send({
-        bank_account:[{
+    res.send([{
                 nama_bank:"Mandiri",
                 no_rek:"9000005352555",
                 an_rek:"Muhammad Nuraga",
@@ -236,7 +235,7 @@ app.get("/getbank",function(req,res){
                 icon:"trafficnet.id:5000/icon/logobca.png"
             }
         ]
-    })
+    )
 })
 
 app.get("/icon/:id",function(req,res){
