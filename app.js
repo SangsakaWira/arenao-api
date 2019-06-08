@@ -213,12 +213,26 @@ app.post("/upload", upload.single("photo"),(req,res)=>{
     else throw "error"
 })
 
-// GET GAMBAR bukti
+// GET GAMBAR BUKTI
 app.get("/bukti/:gambar", function (req, res) {
     res.sendFile(__dirname + "/uploads/bukti_transfer/" + req.params.gambar)
 })
 
-app.get("/home", function (req, res) {
+app.get("/upload", function (req, res) {
     res.sendFile(__dirname + "/index.html")
 })
 
+app.get("/getbank",function(req,res){
+    res.send({
+        bank1:{
+            nama_bank:"Mandiri",
+            no_rek:9000005352555,
+            an_rek:"Muhammad Nuraga"
+        },
+        bank2:{
+            nama_bank:"BCA",
+            no_rek:6720331274,
+            an_rek:"Muhammad Nuraga"
+        }
+    })
+})
