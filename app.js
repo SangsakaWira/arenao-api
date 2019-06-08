@@ -227,12 +227,12 @@ app.get("/getbank",function(req,res){
                 nama_bank:"Mandiri",
                 no_rek:"9000005352555",
                 an_rek:"Muhammad Nuraga",
-                icon:"trafficnet.id:5000/icon/logomandiri.png"
+                icon:"http://trafficnet.id:5000/icon/logomandiri.png"
             },{
                 nama_bank:"BCA",
                 no_rek:"9000005352555",
                 an_rek:"Muhammad Nuraga",
-                icon:"trafficnet.id:5000/icon/logobca.png"
+                icon:"http://trafficnet.id:5000/icon/logobca.png"
             }
         ]
     )
