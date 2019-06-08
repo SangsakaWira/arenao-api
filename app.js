@@ -239,5 +239,5 @@ app.get("/getbank",function(req,res){
 })
 
 app.get("/icon/:id",function(req,res){
-    res.sendFile(__dirname + "/"+req.params.id)
+    res.sendFile(__dirname + "/icon/"+req.params.id)
 })
