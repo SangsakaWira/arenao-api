@@ -194,6 +194,16 @@ app.route("/field").get(function (req, res) {
     })
 })
 
+app.patch("/field/:id",urlencodedParser,function(req,res){
+    field.findByIdAndUpdate(req.params.id,req.body,{new:true},function(err,doc){
+        if (err) {
+            console.log("Something wrong when updating data!")
+        } else {
+            console.log(doc)
+        }
+    })
+})
+
 app.get("/email/:email",function(req,res){
     user.findOne({
 	email:req.params.email
