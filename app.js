@@ -127,6 +127,7 @@ app.route('/transaksi')
             mulai:req.body.mulai,
             selesai:req.body.selesai,
             biaya:req.body.biaya,
+            biaya_sewa:req.body.biaya_sewa,
             lapangan:req.body.lapangan,
             user:req.body.user,
             field_user:req.body.field_user,
