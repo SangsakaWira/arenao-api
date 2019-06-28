@@ -115,7 +115,7 @@ app.route('/transaksi')
             if (err) {
                 console.log("Something is wrong!")
             } else {
-                res.send(data)
+                res.send(doc)
             }     
         })
     })
