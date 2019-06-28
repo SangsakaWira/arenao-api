@@ -123,7 +123,7 @@ app.route('/transaksi')
         console.log(req.body)
         transaksi.create({
             tanggal:req.body.tanggal,
-            tanggal_format:new Date(),
+            tanggal_transaksi:new Date(),
             mulai:req.body.mulai,
             selesai:req.body.selesai,
             biaya:req.body.biaya,
