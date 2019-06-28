@@ -189,14 +189,12 @@ app.get("/transaksi/:id/:status", function (req, res) {
 app.get("/alltransaksi/:username", function (req, res) {
     transaksi.find({
         user:req.params.username
-    },function(err,data){
-        if(err){
-            res.send({
-                message:"Error"
-            })
-        }else{
-            res.send(data)
-        }
+    }).sort({tanggal_transaksi: 'desc'}).exec((err,doc)=>{
+        if (err) {
+            console.log("Something is wrong!")
+        } else {
+            res.send(doc)
+        }     
     })
        
 })
