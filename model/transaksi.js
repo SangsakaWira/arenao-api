@@ -4,6 +4,7 @@ mongoose.connect("mongodb://localhost/arenao",{useNewUrlParser:true})
 
 const fieldSchema = mongoose.Schema({
     tanggal:String,
+    tanggal_format:Date,
     mulai:String,
     selesai:String,
     biaya:String,
@@ -13,10 +14,7 @@ const fieldSchema = mongoose.Schema({
     status:String,
     nama_bank:String,
     rekening:String,
-    an_bank:String,
-    sort:{
-        date_added: -1
-    }
+    an_bank:String
 })
 
 let transaksi = mongoose.model("transaksi",fieldSchema)

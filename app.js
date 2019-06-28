@@ -121,7 +121,20 @@ app.route('/transaksi')
     })
     .post(urlencodedParser, function (req, res) {
         console.log(req.body)
-        transaksi.create(req.body, function (err, data) {
+        transaksi.create({
+            tanggal:req.body.tanggal,
+            tanggal_format:new Date(),
+            mulai:req.body.mulai,
+            selesai:req.body.selesai,
+            biaya:req.body.biaya,
+            lapangan:req.body.lapangan,
+            user:req.body.user,
+            field_user:req.body.field_user,
+            status:req.body.status,
+            nama_bank:req.body.nama_bank,
+            rekening:req.body.rekening,
+            an_bank:req.body.an_bank
+        }, function (err, data) {
             if (err) {
                 console.log("Something went wrong")
             } else {
