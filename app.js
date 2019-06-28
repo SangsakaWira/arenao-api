@@ -159,6 +159,18 @@ app.get("/transaksi/:id/:status", function (req, res) {
     res.redirect("/transaksi/" + req.params.id)
 })
 
+// app.get("/transaksi/:tanggal",(req,res)=>{
+//     transaksi.find({
+//         tanggal:req.params.tanggal
+//     },(err,doc)=>{
+//         if (err) {
+//             console.log("Something is wrong!")
+//         } else {
+//             res.send(data)
+//         }
+//     })
+// })
+
 // GET ALL TRANSACTION BY USERNAME
 app.get("/alltransaksi/:username", function (req, res) {
     transaksi.find({

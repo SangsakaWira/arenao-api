@@ -13,7 +13,10 @@ const fieldSchema = mongoose.Schema({
     status:String,
     nama_bank:String,
     rekening:String,
-    an_bank:String
+    an_bank:String,
+    sort:{
+        date_added: -1
+    }
 })
 
 let transaksi = mongoose.model("transaksi",fieldSchema)
