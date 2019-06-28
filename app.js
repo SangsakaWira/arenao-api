@@ -117,7 +117,7 @@ app.route('/transaksi')
             } else {
                 res.send(data)
             }
-        })
+        }).sort({tanggal_transaksi: 'desc'})
     })
     .post(urlencodedParser, function (req, res) {
         console.log(req.body)
