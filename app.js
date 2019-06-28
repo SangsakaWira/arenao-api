@@ -111,13 +111,13 @@ app.get("/img/:gambar", function (req, res) {
 // GET ALL TRANSAKSI & POST NEW TRANSAKSI
 app.route('/transaksi')
     .get(function (req, res) {
-        transaksi.find(function (err, data) {
+        transaksi.find({}).sort({tanggal_transaksi: 'desc'}).exec((err,doc)=>{
             if (err) {
                 console.log("Something is wrong!")
             } else {
                 res.send(data)
-            }
-        }).sort({tanggal_transaksi: 'ascending'})
+            }     
+        })
     })
     .post(urlencodedParser, function (req, res) {
         console.log(req.body)
