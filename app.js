@@ -93,8 +93,8 @@ app.get("/user/:id", function (req, res) {
 
 // EDIT USER PROFILE
 app.patch("/user/:id", urlencodedParser,function (req, res) {
-    user.findByIdAndUpdate(req.params.id,req.body
-    ,{new: true, runValidators:true}, function (err, doc) {
+    user.findByIdAndUpdate(req.params.id,req.body,
+        {new: true, runValidators:true},function(err, doc){
         if (err) {
             console.log("Something wrong when updating data!")
         } else {
@@ -104,16 +104,36 @@ app.patch("/user/:id", urlencodedParser,function (req, res) {
     })
 })
 
-app.post("/avatar/:username", urlencodedParser, function (req, res) {
-    user.findByIdAndUpdate(req.params.username, req.body, {
-        new: true,
-        runValidators: true
-    }, function (err, doc) {
+// app.use((req,res)=>{
+//     res.send({
+//         status:404,
+//         message:"Page not found"
+//     })
+// })
+
+app.post("/uploadavatar", urlencodedParser, upload.single("photo"), function (req, res) {
+    avatar.create({
+        fullname:req.body.username,
+        avatar:req.file
+    },(err,doc)=>{
+        if(err){
+            res.status(404).send(err)
+        }else{
+             res.status(200).send(doc)
+        }
+    })
+})
+
+app.get("/uploadavatar", upload.single("photo"), (req, res) => {
+    res.sendFile(__dirname+"/uploadavatar.html")
+})
+
+app.get("/avatars",(req,res)=>{
+    avatar.find((err,doc)=>{
         if (err) {
-            console.log("Something wrong when updating data!")
+            res.status(404).send(err)
         } else {
-            console.log(doc)
-            res.send(doc)
+            res.status(200).send(doc)
         }
     })
 })
@@ -259,13 +279,17 @@ app.get("/email/:email",function(req,res){
 
 app.post("/upload", upload.single("photo"),(req,res)=>{
     if(req.file){
-        res.json(req.file);
+        res.json(req.file.path);
     }
     else throw "error"
 })
 
 // GET GAMBAR BUKTI
 app.get("/bukti/:gambar", function (req, res) {
+    res.sendFile(__dirname + "/uploads/bukti_transfer/" + req.params.gambar)
+})
+
+app.get("/avatar/:gambar", function (req, res) {
     res.sendFile(__dirname + "/uploads/bukti_transfer/" + req.params.gambar)
 })
 

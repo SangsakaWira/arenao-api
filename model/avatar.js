@@ -6,7 +6,7 @@ mongoose.connect("mongodb://localhost/arenao", {
 
 const fieldSchema = mongoose.Schema({
     fullname: String,
-    avatar:String
+    avatar:JSON
 })
 
 let avatar = mongoose.model("avatar", fieldSchema)
