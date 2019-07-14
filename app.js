@@ -17,6 +17,7 @@ let bankacc = require("./model/bank")
 let avatar = require("./model/avatar")
 
 app.use(express.static(__dirname + "/img"))
+app.use(express.static(__dirname + "/uploads/bukti_transfer"))
 
 app.listen(5000, function () {
     console.log("Server is running")
@@ -137,6 +138,34 @@ app.get("/avatars",(req,res)=>{
         }
     })
 })
+
+app.patch("/avatar/:id", urlencodedParser, (req, res) => {
+    avatar.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
+    }, function (err, doc) {
+        if (err) {
+            res.send({
+                message: "Something is wrong"
+            })
+        } else {
+            res.send(doc)
+        }
+    })
+})
+
+// app.patch("/field/:id", urlencodedParser, function (req, res) {
+//     field.findByIdAndUpdate(req.params.id, req.body, {
+//         new: true
+//     }, function (err, doc) {
+//         if (err) {
+//             res.send({
+//                 message: "Something is wrong"
+//             })
+//         } else {
+//             res.send(doc)
+//         }
+//     })
+// })
 
 // GET GAMBAR LAPANGAN
 app.get("/img/:gambar", function (req, res) {
