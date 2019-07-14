@@ -1,7 +1,6 @@
 {
   "name": "arenao-api",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +13,14 @@
     "mongoose": "^5.5.5",
     "multer": "^1.4.1",
     "socket.io": "^2.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SangsakaWira/arenao-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SangsakaWira/arenao-api/issues"
+  },
+  "homepage": "https://github.com/SangsakaWira/arenao-api#readme",
+  "description": ""
 }
