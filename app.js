@@ -104,6 +104,20 @@ app.patch("/user/:id", urlencodedParser,function (req, res) {
     })
 })
 
+app.post("/avatar/:username", urlencodedParser, function (req, res) {
+    user.findByIdAndUpdate(req.params.username, req.body, {
+        new: true,
+        runValidators: true
+    }, function (err, doc) {
+        if (err) {
+            console.log("Something wrong when updating data!")
+        } else {
+            console.log(doc)
+            res.send(doc)
+        }
+    })
+})
+
 // GET GAMBAR LAPANGAN
 app.get("/img/:gambar", function (req, res) {
     res.sendFile(__dirname + "/img/" + req.params.gambar)
@@ -267,7 +281,7 @@ app.get("/getbank",function(req,res){
                 icon:"http://trafficnet.id:5000/icon/logomandiri.png"
             },{
                 nama_bank:"BCA",
-                no_rek:"9000005352555",
+                no_rek:"6720331274",
                 an_rek:"Muhammad Nuraga",
                 icon:"http://trafficnet.id:5000/icon/logobca.png"
             }
