@@ -6,8 +6,7 @@ const fieldSchema = mongoose.Schema({
     fullname:String,
     email:String,
     password:String,
-    bankacc:String,
-    avatar:String
+    bankacc:String
 })
 
 let user = mongoose.model("user",fieldSchema)

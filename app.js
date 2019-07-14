@@ -14,6 +14,7 @@ let field = require("./model/field")
 let user = require("./model/user")
 let transaksi = require("./model/transaksi")
 let bankacc = require("./model/bank")
+let avatar = require("./model/avatar")
 
 app.use(express.static(__dirname + "/img"))
 
