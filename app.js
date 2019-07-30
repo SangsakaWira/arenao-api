@@ -1,9 +1,14 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const multer = require('multer')
+const fs = require('fs')
 
 const upload = multer({
     dest:__dirname+"/uploads/bukti_transfer"
+})
+
+const uploadAvatar = multer({
+    dest:__dirname+"/avatars"
 })
 
 let urlencodedParser = bodyParser.urlencoded({
@@ -18,6 +23,8 @@ let avatar = require("./model/avatar")
 
 app.use(express.static(__dirname + "/img"))
 app.use(express.static(__dirname + "/uploads/bukti_transfer"))
+app.use(express.static(__dirname + "/avatars"))
+
 
 app.listen(5000, function () {
     console.log("Server is running")
@@ -112,20 +119,20 @@ app.patch("/user/:id", urlencodedParser,function (req, res) {
 //     })
 // })
 
-app.post("/uploadavatar", urlencodedParser, upload.single("photo"), function (req, res) {
-    avatar.create({
-        fullname:req.body.username,
-        avatar:req.file
-    },(err,doc)=>{
-        if(err){
-            res.status(404).send(err)
-        }else{
-             res.status(200).send(doc)
-        }
-    })
-})
+// app.post("/uploadavatar", urlencodedParser, upload.single("photo"), function (req, res) {
+//     avatar.create({
+//         fullname:req.body.username,
+//         avatar:req.file
+//     },(err,doc)=>{
+//         if(err){
+//             res.status(404).send(err)
+//         }else{
+//              res.status(200).send(doc)
+//         }
+//     })
+// })
 
-app.get("/uploadavatar", upload.single("photo"), (req, res) => {
+app.get("/getAvatarPage", upload.single("photo"), (req, res) => {
     res.sendFile(__dirname+"/uploadavatar.html")
 })
 
@@ -170,6 +177,18 @@ app.patch("/avatar/:id", urlencodedParser, (req, res) => {
 // GET GAMBAR LAPANGAN
 app.get("/img/:gambar", function (req, res) {
     res.sendFile(__dirname + "/img/" + req.params.gambar)
+})
+
+app.get("/avatar/:username",(req,res)=>{
+    user.findOne({fullname:req.params.username},(err,doc)=>{
+        if(err){
+            res.send("Error or User not found")
+        }else{
+            res.setHeader('Content-Type', 'image/jpg')
+            // res.sendFile(__dirname + "/avatars/" + doc.avatar)
+            fs.createReadStream(__dirname + "/avatars/" + doc.avatar).pipe(res)
+        }
+    })
 })
 
 // GET ALL TRANSAKSI & POST NEW TRANSAKSI
@@ -313,14 +332,28 @@ app.post("/upload", upload.single("photo"),(req,res)=>{
     else throw "error"
 })
 
+app.post("/uploadAvatar", urlencodedParser, uploadAvatar.single("photo"),(req,res)=>{
+    user.findOneAndUpdate(req.body,{avatar:req.file.filename},{new:true},function(err,doc){
+        if(err){
+            res.send("error")
+        }else{
+            res.send({
+                message:"avatar updated"
+            })
+        }
+    })
+    // }
+    // else throw "error"
+})
+
 // GET GAMBAR BUKTI
 app.get("/bukti/:gambar", function (req, res) {
     res.sendFile(__dirname + "/uploads/bukti_transfer/" + req.params.gambar)
 })
 
-app.get("/avatar/:gambar", function (req, res) {
-    res.sendFile(__dirname + "/uploads/bukti_transfer/" + req.params.gambar)
-})
+// app.get("/avatar/:gambar", function (req, res) {
+//     res.sendFile(__dirname + "/uploads/bukti_transfer/" + req.params.gambar)
+// })
 
 app.get("/upload", function (req, res) {
     res.sendFile(__dirname + "/index.html")
