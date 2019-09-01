@@ -1,14 +1,10 @@
-const mongoose = require("mongoose")
-
-mongoose.connect("mongodb://localhost/arenao", {
-    useNewUrlParser: true
-})
+const mongoose = require('mongoose')
 
 const fieldSchema = mongoose.Schema({
-    fullname: String,
-    avatar:String
+	fullname: String,
+	avatar: String
 })
 
-let avatar = mongoose.model("avatar", fieldSchema)
+let avatar = mongoose.model('avatar', fieldSchema)
 
 module.exports = avatar
